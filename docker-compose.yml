@@ -20,7 +20,8 @@ services:
     - "3306:3306"
     networks:
     - wp-network
-
+    volumes:
+    - db_data:/var/lib/mysql
   php:
     build: 
       context: ./Dockerfile
@@ -47,3 +48,7 @@ services:
 networks:
   wp-network:
     driver: bridge
+
+volumes:
+  db_data:
+    external: true
